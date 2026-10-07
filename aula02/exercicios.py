@@ -43,8 +43,9 @@ def intercala(lista_a, lista_b):
     return [item for par in zip(lista_a, lista_b) for item in par]
 
 
-
 def remove_repetidos(lista):
-    """(Desafio) Devolve uma lista nova sem repetidos,
-    mantendo a ordem da primeira aparicao."""
-    pass
+    nova_lista = []
+    for elemento in lista:
+        if elemento not in nova_lista:
+            nova_lista.append(elemento)
+    return nova_lista
