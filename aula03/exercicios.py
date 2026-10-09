@@ -54,21 +54,43 @@ def busca_binaria_contando(lista, alvo):
 
 
 def tem_repetido_contando(lista):
-    """Devolve (True, comparacoes) ou (False, comparacoes).
-    Conte 1 comparacao cada vez que comparar um par de elementos.
-    Pare assim que encontrar o primeiro repetido."""
-    pass
+    comparacoes = 0
+    n = len(lista)
+    
+    for i in range(n):
+        for j in range(i + 1, n):
+            comparacoes += 1
+            if lista[i] == lista[j]:
+                return (True, comparacoes)
+                
+    return (False, comparacoes)
 
 
 def quantas_divisoes(n):
-    """Quantas vezes da para dividir n por 2 ate sobrar 1.
-    Use divisao inteira. Devolve so o numero, sem contagem.
-    quantas_divisoes(8) -> 3"""
-    pass
+    contador = 0
+    while n > 1:
+        n = n // 2
+        contador += 1
+    return contador
 
 
 def mais_frequente_contando(lista):
-    """(Desafio) Devolve (valor, comparacoes).
-    O valor que mais aparece na lista. Em caso de empate, o que aparece
-    primeiro. Conte 1 comparacao cada vez que comparar dois elementos."""
-    pass
+    if not lista:
+        return (None, 0)
+        
+    comparacoes = 0
+    maior_frequencia = -1
+    elemento_mais_frequente = None
+    
+    for i in range(len(lista)):
+        frequencia_atual = 0
+        for j in range(len(lista)):
+            comparacoes += 1
+            if lista[i] == lista[j]:
+                frequencia_atual += 1
+                
+        if frequencia_atual > maior_frequencia:
+            maior_frequencia = frequencia_atual
+            elemento_mais_frequente = lista[i]
+            
+    return (elemento_mais_frequente, comparacoes)
